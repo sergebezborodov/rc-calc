@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calc</title>
+
+
+    <script type="text/javascript" src="calc.js"></script>
+<!--
+
+    <script type="text/javascript">
+        var AirPressure = 1013,
+            Elevation = 500,
+            Temp = 25,
+            wGrad = 1,
+
+            AUW = 500,
+            rotorCount = 4,
+
+            PropDiametr = 8,
+            PropBladesCount = 2,
+            PropConst = 1.11,
+
+            MotorResistance = 0.45, // Motor Resistance,
+            MotorNoLoadCurrency = 0.8,
+            motorMaxCurrent = 10,
+            motorKv = 1100,
+            motorMagPoles = 10,
+            motorLimitValue = 10,
+            motorLimitType = 'A',
+
+            AkkVoltPerCell = 3.7,
+            AkkCellCount = 3,
+            voltage = AkkVoltPerCell * AkkCellCount,
+            AkkCapacity = 2500,
+            accuChargeState = 1,
+            AkkResistance = 0.0084,
+            AkkCellParallel = 1,
+
+            EscResistance = 0.015
+        ;
+
+        var Airdensity = 100 * AirPressure * ((1 - (0.0065 * Elevation / 288.15)) ^ 5.255) / 287.05 / (Temp + 273.15);
+        console.log('Airdensity: ', Airdensity);
+
+        var PropEffDiametr = PropDiametr * (PropBladesCount / 2)^0.2;
+        console.log('PropEffDiametr: ', PropEffDiametr);
+
+        var A = -1 * MotorNoLoadCurrency * MotorResistance - voltage;
+        console.log('A: ', A);
+
+        var E = (PropConst ^ 0.33333)
+                * Math.sqrt(
+                2 * (AUW / rotorCount)^3
+                        * 9.81^3 / Airdensity
+                        / (0.001 * 25.4 * PropEffDiametr / 2)^2 / Math.PI
+        ) / wGrad;
+        console.log('E: ', E);
+
+        var C = E + MotorNoLoadCurrency * 10.63; // Optimal Efficiency: Voltage
+        console.log('C: ', C);
+
+        var B = MotorResistance;
+        I1 = (-A + Math.sqrt(A * A - 4 * B * C)) / 2 / B;
+        I2 = (-A - Math.sqrt(A * A - 4 * B * C)) / 2 / B;
+
+        if ((I1 > 0) && (I1 < motorMaxCurrent)) {
+            x = I1;
+        }
+        if ((I2 > 0) && (I2 < motorMaxCurrent)) {
+            x = I2;
+        }
+
+        var d = (accuChargeState * AkkVoltPerCell * AkkCellCount)
+                - ((AkkResistance * AkkCellCount / AkkCellParallel * rotorCount * x) + (EscResistance * x));
+
+
+// ------- GET IO ------------------------------------------------------------------------------------------------------
+
+        //Po = 1 * outIo['value'] * (1 * outUIo['value'] - 1 * 1 * outIo['value'] * outRm['value']);
+        var Po = MotorNoLoadCurrency * (voltage - MotorNoLoadCurrency * MotorResistance);
+
+        //Fdreh = outKv['value'] * (outUIo['value'] - 1 * outIo['value'] * outRm['value']) * outPols['value'] / 120;
+        var Fdreh = motorKv * (voltage - MotorNoLoadCurrency * MotorResistance) * motorMagPoles / 120;
+
+        //FELossPerKg = 0.000000164668 * Math['pow'](Fdreh, 3) - 0.0000646501 * Math['pow'](Fdreh, 2) + 0.127483 * Fdreh - 1.94292;
+        var FELossPerKg = 0.000000164668 * Math.pow(Fdreh, 3) - 0.0000646501 * Math.pow(Fdreh, 2) + 0.127483 * Fdreh - 1.94292;
+
+        // NF = FELossPerKg / Po;
+        var NF = FELossPerKg / Po;
+
+        // Fdreh = 1 * outKv['value'] * (d - x * outRm['value']) * outPols['value'] / 120;
+        Fdreh = motorKv * (d - x * MotorResistance) * motorMagPoles / 120;
+
+        // FELossEst = (0.000000164668 * Math['pow'](Fdreh, 3) - 0.0000646501 * Math['pow'](Fdreh, 2) + 0.127483 * Fdreh - 1.94292) / NF;
+        var FELossEst = (0.000000164668 * Math.pow(Fdreh, 3) - 0.0000646501 * Math.pow(Fdreh, 2) + 0.127483 * Fdreh - 1.94292) / NF;
+
+        // IoLoss = FELossEst / (d - x * outRm['value']);
+        var IoLoss = FELossEst / (d - x * MotorResistance);
+
+        if (d < voltage) {
+            Im = MotorNoLoadCurrency / voltage * (d - voltage);
+        } else {
+            Ife = MotorNoLoadCurrency * voltage / d;
+            Im = Math.sqrt(Math.pow(MotorNoLoadCurrency, 2) - Math.pow(Ife, 2));
+        }
+
+        //ILossTotal = 0.45 * outIo['value'] + 0.55 * IoLoss;
+        var ILossTotal = 0.45 * MotorNoLoadCurrency + 0.55 * IoLoss;
+        ILossNotLinear = 1;
+
+        if ((motorLimitType == 'W') && (motorLimitValue > 0) && (x > (motorLimitValue / voltPerCell / cellCount))) {
+            ILossNotLinear = (x * voltPerCell * cellCount) / (motorLimitValue);
+        }
+        if ((motorLimitType == 'A') && (motorLimitValue > 0) && (x > motorLimitValue)) {
+            ILossNotLinear = x / motorLimitValue;
+        }
+
+        var IoEst =  (Math.pow(ILossNotLinear, 0.4 * ILossNotLinear * ILossNotLinear) * (ILossTotal));
+// ------- GET END ------------------------------------------------------------------------------------------------------
+
+        A = -IoEst * MotorResistance - d;
+        C = E + IoEst * d;
+
+        I1 = (-A + Math.sqrt(A * A - 4 * B * C)) / 2 / B;
+        I2 = (-A - Math.sqrt(A * A - 4 * B * C)) / 2 / B;
+
+        if ((I1 > 0) && (I1 < motorMaxCurrent)) {
+            x = I1;
+        }
+        if ((I2 > 0) && (I2 < motorMaxCurrent)) {
+            x = I2;
+        }
+
+        d = (accuChargeState * AkkVoltPerCell * AkkCellCount)
+                - ((AkkResistance * AkkCellCount / AkkCellParallel * rotorCount * x) + (EscResistance * x));
+
+        console.log('D:' + d);
+        var TimeHover = AkkCapacity / 1000 * 0.85 / rotorCount / x * 60;
+
+        console.log('Timehover: ' + TimeHover);
+    </script>
+-->
+
+</head>
+<body></body>
+</html>

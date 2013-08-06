@@ -1,0 +1,540 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0039)http://www.ecalc.ch/fancalc_e.htm?ecalc -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<link rel="shortcut icon" href="http://www.ecalc.ch/favicon.ico">
+
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="keywords" content="Rechner Berechnung berechnen auslegen eflight Modellflug RC Schub Impeller Ducted Fan EDF FanCalc Strom Spannung Innenwiderstand Wirkungsgrad Batterie LiPo NiMH electric motor calculator, eflight calculator, motorcalc, calc, calculator,rc electric calculator, electric aircraft, electric planes, R/C, prop, thrust, motor, efficiency">
+<meta name="description" content="Der Impeller Calculator Hilft bei der Auslegung Ihrer Elektro-Antriebe für Fan / EDF / Impeller getriebene Jets.">
+<meta name="owner" content="Markus Mueller">
+<meta name="copyright" content="2005-2006">
+<meta name="author" content="Markus Mueller">
+<meta name="robots" content="nofollow">
+
+<title>eCalc: fanCalc - EDF / Fan / Impeller eMotor Calculator - (c) by Markus
+Müller</title>
+<!--
+
+   Title: EDF Motor Calculator
+   Copyright (C) by Markus Müller, www.s4a.ch/eflight
+	
+	Redistribution and use in source and binary forms, with or without modification,
+	are NOT permitted. We reject any liability.
+
+-->
+
+<link rel="stylesheet" type="text/css" href="./eCalc  fanCalc - EDF   Fan   Impeller eMotor Calculator - (c) by Markus Müller_files/calcs.css">
+
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="./calcs/flot/excanvas.min.js"></script><![endif]-->
+<script type="text/javascript" async="" src="./eCalc  fanCalc - EDF   Fan   Impeller eMotor Calculator - (c) by Markus Müller_files/ga.js"></script><script language="javascript" type="text/javascript" src="./eCalc  fanCalc - EDF   Fan   Impeller eMotor Calculator - (c) by Markus Müller_files/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="./eCalc  fanCalc - EDF   Fan   Impeller eMotor Calculator - (c) by Markus Müller_files/jquery.flot.min.js"></script>
+<script language="javascript" type="text/javascript" src="./eCalc  fanCalc - EDF   Fan   Impeller eMotor Calculator - (c) by Markus Müller_files/jquery.flot.threshold.min.js"></script>
+<script language="JavaScript" src="./eCalc  fanCalc - EDF   Fan   Impeller eMotor Calculator - (c) by Markus Müller_files/lang_e.js"> </script>
+<script language="JavaScript" src="./eCalc  fanCalc - EDF   Fan   Impeller eMotor Calculator - (c) by Markus Müller_files/customshop.js"> </script>
+<script language="JavaScript" src="./eCalc  fanCalc - EDF   Fan   Impeller eMotor Calculator - (c) by Markus Müller_files/componentdata.js"> </script>
+<script language="JavaScript" src="./eCalc  fanCalc - EDF   Fan   Impeller eMotor Calculator - (c) by Markus Müller_files/calclib.js"> </script>
+<script language="JavaScript" src="./eCalc  fanCalc - EDF   Fan   Impeller eMotor Calculator - (c) by Markus Müller_files/fancalc.js"> </script>
+<script language="JavaScript">document.write(theShopCustomData)</script>
+<script language="JavaScript" src="./eCalc  fanCalc - EDF   Fan   Impeller eMotor Calculator - (c) by Markus Müller_files/preselect.js"> </script>
+<script language="javascript" src="./eCalc  fanCalc - EDF   Fan   Impeller eMotor Calculator - (c) by Markus Müller_files/plotGraphic.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29404800-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+displayAds=!isServicePayed;
+</script>
+</head>
+
+<body onunload="showLeaveMsg()" bgcolor="#FFFFFF" text="#000000">
+<center>
+
+<table>
+	<tbody><tr>
+		<td valign="top">
+		
+<!-- CODE von eCalc // -->
+
+
+<table border="0" width="950" cellspacing="1">
+  <tbody><tr>
+    <td width="33%" valign="middle" align="center">
+      <script language="JavaScript">document.write(theShopLogo)</script><a href="http://www.s4a.ch/" target="_blank"><img border="0" src="./eCalc  fanCalc - EDF   Fan   Impeller eMotor Calculator - (c) by Markus Müller_files/p_s4alogo.gif" width="81" height="45"></a>
+    </td>
+    <td width="33%" valign="middle" align="center" class="titel"><a href="http://www.ecalc.ch/indexcalc.htm"><img border="0" src="./eCalc  fanCalc - EDF   Fan   Impeller eMotor Calculator - (c) by Markus Müller_files/p_ecalclogo.gif" alt="fanCalc - the most reliable Calculator on the Web" width="150" height="53"></a><br>
+      <i><font color="#FF0000">fan</font><b>Calc</b></i> - Calculator for Ducted Fans</td>
+    <td width="33%" valign="middle" align="center">
+      <script language="JavaScript">document.write(theDonationForm)</script><form action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="UHHTBVT44LR2N"><input type="image" src="./eCalc  fanCalc - EDF   Fan   Impeller eMotor Calculator - (c) by Markus Müller_files/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="./eCalc  fanCalc - EDF   Fan   Impeller eMotor Calculator - (c) by Markus Müller_files/pixel.gif" width="1" height="1"></form>
+    </td>
+  </tr>
+  <tr>
+    <td width="33%" valign="middle" align="center" class="output"><b>all Data
+      without guarantee!<br>
+      Accuracy +/-12%</b></td>
+    <td width="33%" valign="middle" align="center" class="output">The Calculator works with JavaScript.,&nbsp;<br>
+      Therefore you have to turn it on in your Browser.</td>
+    <td width="33%" valign="middle" align="center" class="output"><a href="http://www.ecalc.ch/calcs/help/fancalchelp.htm" target="_blank">Help</a>
+      | <a href="javascript:location.replace(fancalcD)">Deutsch</a> | <a href="javascript:location.replace(fancalcF)">Français</a> |
+      <a href="javascript:location.replace(fancalcC)">&#20013;&#25991;</a></td>
+  </tr>
+</tbody></table>
+<form name="inputform" action="http://www.ecalc.ch/admin_s4a/add.asp"><input type="hidden" onchange="motorcalcs()" size="5" name="outPropThrust" style="font-weight: normal; " value="NaN">
+  <table border="0">
+  <tbody><tr>
+      <td>
+      <hr class="line">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <table border="0" cellspacing="0" cellpadding="4" width="100%">
+          <tbody><tr>
+            <td class="input" valign="top" align="left" colspan="3" nowrap=""><b><big>Design
+              Fundamentals:<br>
+              </big></b> <select size="1" name="units" onchange="changeUnits(document.inputform)" style="color: rgb(0, 0, 0); ">
+                <option value="metric">metric units</option>
+                <option value="imperial">imperial units</option>
+              </select> </td>
+            <td class="input" valign="top" align="left" nowrap="">&nbsp;</td>
+            <td class="input" valign="top" align="left" nowrap="">&nbsp; </td>
+            <td class="input" valign="top" align="left" nowrap="">&nbsp;</td>
+            <td class="input" valign="top" align="left" nowrap="">&nbsp;</td>
+            <td class="input" valign="top" align="left" nowrap="">&nbsp;</td>
+            <td class="input" valign="top" align="left" nowrap="">
+               Field Elevation:<br><input onchange="motorcalcs()" size="5" name="elevation" value="500" style="color: rgb(0, 0, 0); ">&nbsp;<span id="lbSeaLevel">m ASL</span>
+            </td>
+            <td class="input" valign="top" align="left" nowrap="">&nbsp;</td>
+            <td class="input" valign="top" align="left" nowrap="">
+               Air Temp:<br><input onchange="motorcalcs()" size="5" name="temp" value="25" style="color: rgb(0, 0, 0); ">&nbsp;<span id="lbTemp">°C</span>
+            </td>
+            <td class="input" valign="top" align="left" nowrap="">&nbsp;</td>
+            <td class="input" valign="top" align="left" nowrap="">
+               Pressure (QNH):<br><input onchange="motorcalcs()" size="5" name="qnh" value="1013" style="color: rgb(0, 0, 0); ">&nbsp;<span id="lbPress">hPa</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="input" valign="top" align="left" bgcolor="#EEEEEE" nowrap=""><b>Battery:</b>
+              (continuous / max. C) - charge state<br>
+              <select onchange="configBatterie()" name="celltype" style="color: rgb(0, 0, 0); "> 
+            <option value="0" selected="">Custom
+            </option><option value="1">LiPo 150mAh - 65/100C</option><option value="2">LiPo 300mAh - 65/100C</option><option value="3">LiPo 450mAh - 65/100C</option><option value="4">LiPo 850mAh - 65/100C</option><option value="5">LiPo 1200mAh - 65/100C</option><option value="6">LiPo 1600mAh - 65/100C</option><option value="7">LiPo 2100mAh - 65/100C</option><option value="8">LiPo 2500mAh - 65/100C</option><option value="9">LiPo 3300mAh - 65/100C</option><option value="10">LiPo 3700mAh - 65/100C</option><option value="11">LiPo 4000mAh - 65/100C</option><option value="12">LiPo 4500mAh - 65/100C</option><option value="13">LiPo 5000mAh - 65/100C</option><option value="14">LiPo 6000mAh - 65/100C</option><option value="15">LiPo 150mAh - 55/80C</option><option value="16">LiPo 300mAh - 55/80C</option><option value="17">LiPo 450mAh - 55/80C</option><option value="18">LiPo 850mAh - 55/80C</option><option value="19">LiPo 1200mAh - 55/80C</option><option value="20">LiPo 1600mAh - 55/80C</option><option value="21">LiPo 2100mAh - 55/80C</option><option value="22">LiPo 2500mAh - 55/80C</option><option value="23">LiPo 3300mAh - 55/80C</option><option value="24">LiPo 3700mAh - 55/80C</option><option value="25">LiPo 4000mAh - 55/80C</option><option value="26">LiPo 4500mAh - 55/80C</option><option value="27">LiPo 5000mAh - 55/80C</option><option value="28">LiPo 6000mAh - 55/80C</option><option value="29">LiPo  150mAh - 45/60C</option><option value="30">LiPo  300mAh - 45/60C</option><option value="31">LiPo  450mAh - 45/60C</option><option value="32">LiPo  850mAh - 45/60C</option><option value="33">LiPo 1200mAh - 45/60C</option><option value="34">LiPo 1600mAh - 45/60C</option><option value="35">LiPo 2100mAh - 45/60C</option><option value="36">LiPo 2500mAh - 45/60C</option><option value="37">LiPo 3300mAh - 45/60C</option><option value="38">LiPo 3700mAh - 45/60C</option><option value="39">LiPo 4000mAh - 45/60C</option><option value="40">LiPo 4500mAh - 45/60C</option><option value="41">LiPo 5000mAh - 45/60C</option><option value="42">LiPo 6000mAh - 45/60C</option><option value="43">LiPo  150mAh - 35/50C</option><option value="44">LiPo  300mAh - 35/50C</option><option value="45">LiPo  450mAh - 35/50C</option><option value="46">LiPo  850mAh - 35/50C</option><option value="47">LiPo 1200mAh - 35/50C</option><option value="48">LiPo 1600mAh - 35/50C</option><option value="49">LiPo 2100mAh - 35/50C</option><option value="50">LiPo 2500mAh - 35/50C</option><option value="51">LiPo 3300mAh - 35/50C</option><option value="52">LiPo 3700mAh - 35/50C</option><option value="53">LiPo 4000mAh - 35/50C</option><option value="54">LiPo 4500mAh - 35/50C</option><option value="55">LiPo 5000mAh - 35/50C</option><option value="56">LiPo 6000mAh - 35/50C</option><option value="57">LiPo  150mAh - 30/45C</option><option value="58">LiPo  300mAh - 30/45C</option><option value="59">LiPo  450mAh - 30/45C</option><option value="60">LiPo  850mAh - 30/45C</option><option value="61">LiPo 1200mAh - 30/45C</option><option value="62">LiPo 1600mAh - 30/45C</option><option value="63">LiPo 2100mAh - 30/45C</option><option value="64">LiPo 2500mAh - 30/45C</option><option value="65">LiPo 3300mAh - 30/45C</option><option value="66">LiPo 3700mAh - 30/45C</option><option value="67">LiPo 4000mAh - 30/45C</option><option value="68">LiPo 4500mAh - 30/45C</option><option value="69">LiPo 5000mAh - 30/45C</option><option value="70">LiPo 6000mAh - 30/45C</option><option value="71">LiPo  150mAh - 25/35C</option><option value="72">LiPo  300mAh - 25/35C</option><option value="73">LiPo  450mAh - 25/35C</option><option value="74">LiPo  850mAh - 25/35C</option><option value="75">LiPo 1200mAh - 25/35C</option><option value="76">LiPo 1600mAh - 25/35C</option><option value="77">LiPo 2100mAh - 25/35C</option><option value="78">LiPo 2500mAh - 25/35C</option><option value="79">LiPo 3300mAh - 25/35C</option><option value="80">LiPo 3700mAh - 25/35C</option><option value="81">LiPo 4000mAh - 25/35C</option><option value="82">LiPo 4500mAh - 25/35C</option><option value="83">LiPo 5000mAh - 25/35C</option><option value="84">LiPo 6000mAh - 25/35C</option><option value="85">LiPo  150mAh - 20/30C</option><option value="86">LiPo  300mAh - 20/30C</option><option value="87">LiPo  450mAh - 20/30C</option><option value="88">LiPo  850mAh - 20/30C</option><option value="89">LiPo 1200mAh - 20/30C</option><option value="90">LiPo 1600mAh - 20/30C</option><option value="91">LiPo 2100mAh - 20/30C</option><option value="92">LiPo 2500mAh - 20/30C</option><option value="93">LiPo 3300mAh - 20/30C</option><option value="94">LiPo 3700mAh - 20/30C</option><option value="95">LiPo 4000mAh - 20/30C</option><option value="96">LiPo 4500mAh - 20/30C</option><option value="97">LiPo 5000mAh - 20/30C</option><option value="98">LiPo 6000mAh - 20/30C</option><option value="99">LiteStorm 2100CL - 16/22C</option><option value="100">Konion - 13/20C</option><option value="101">A123 1100 - 30/50C</option><option value="102">A123 2300 - 30/50C</option><option value="103">A123 1100 - 15/20C</option><option value="104">A123 2300 - 15/20C</option><option value="105">NiMH 3800 - 50/65C</option><option value="106">NiMH 4200 - 50/65C</option></select> 
+            <select onchange="motorcalcs()" name="chargeState" style="color: rgb(0, 0, 0); "> 
+               <option value="1.06">full
+               </option><option value="1.00" selected="">normal
+               </option><option value="0.94">low
+               </option>
+            </select>
+
+            <input type="hidden" name="Akku" size="50" value="">
+            </td>
+            <td class="input" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">&nbsp;&nbsp;</td>
+            <td class="input" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">#
+              serial:<br>
+              <input onchange="motorcalcs()" size="3" value="3" name="numcells" style="color: rgb(0, 0, 0); ">   S </td>
+            <td class="input" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">&nbsp;</td>
+            <td class="input" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">#
+              parallel:<br>
+              <input onchange="motorcalcs()" size="3" value="1" name="cellsparallel" style="color: rgb(0, 0, 0); ">  P </td>
+            <td class="input" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">&nbsp;</td>
+            <td class="input" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">Capacity:<br>
+              <input onchange="motorcalcs()" size="5" name="outCellCap" style="color: rgb(0, 0, 0); ">     mAh</td>
+            <td class="input" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">&nbsp;</td>
+            <td class="input" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">Resistance:<br>
+              <input onchange="motorcalcs()" size="5" name="outRc" style="color: rgb(0, 0, 0); ">     Ohm</td>
+            <td class="input" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">&nbsp;</td>
+            <td class="input" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">Volt
+              per Cell:<br>
+              <input onchange="motorcalcs()" size="5" value="3.7" name="Vcell" style="color: rgb(0, 0, 0); ">      V</td>
+            <td class="input" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">&nbsp;</td>
+            <td class="input" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">Weight
+              per Cell:<br>
+              <input onchange="motorcalcs()" size="5" name="outCellOz" style="color: rgb(0, 0, 0); "> <span id="lbCellWt">g</span></td>
+          </tr>
+          <tr>
+            <td class="input" valign="top" align="left" nowrap=""><b>Controller:<br>
+              </b> 
+              <select onchange="configESC()" name="conttype" style="color: rgb(0, 0, 0); "> 
+            <option value="0" selected="">Custom            
+            </option><option value="1">max 10A</option><option value="2">max 20A</option><option value="3">max 30A</option><option value="4">max 40A</option><option value="5">max 50A</option><option value="6">max 60A</option><option value="7">max 70A</option><option value="8">max 80A</option><option value="9">max 90A</option><option value="10">max 100A</option><option value="11">max 120A</option><option value="12">max 150A</option><option value="13">max 200A</option><option value="14">max 250A</option><option value="15">max 300A</option></select>
+            <input type="hidden" name="Regler" size="50" value="Custom">
+            </td>
+            <td class="input" valign="top" align="left" nowrap=""></td>
+            <td class="input" valign="top" align="left" nowrap=""> Resistance:<br>
+              <input onchange="motorcalcs()" size="5" value="0.010" name="Resc" style="color: rgb(0, 0, 0); ">   Ohm </td>
+            <td class="input" valign="top" align="left" nowrap=""></td>
+            <td class="input" valign="top" align="left" nowrap="">Continuous
+              Current:<br>
+              <input onchange="motorcalcs()" size="5" name="ResI" style="color: rgb(0, 0, 0); "> A</td>
+            <td class="input" valign="top" align="left" nowrap=""></td>
+            <td class="input" valign="top" align="left" nowrap="">max. Current:<br>
+              <input onchange="motorcalcs()" size="5" name="ResIMax" style="color: rgb(0, 0, 0); "> A</td>
+            <td class="input" valign="top" align="left" nowrap=""></td>
+            <td class="input" valign="top" align="left" nowrap="">Weight:<br>
+              <input onchange="motorcalcs()" size="5" value="1" name="ResWt" style="color: rgb(0, 0, 0); "> <span id="lbResWt">g</span></td>
+            <td class="input" valign="top" align="left" nowrap=""></td>
+            <td class="input" valign="top" align="left" nowrap=""></td>
+            <td class="input" valign="top" align="left" nowrap=""></td>
+            <td class="input" valign="top" align="left" nowrap="">Motor Weight:<br>
+              <input onchange="motorcalcs()" size="5" name="outMotoroz" style="color: rgb(0, 0, 0); "> <span id="lbMotorWt">g</span></td>
+          </tr>
+          <tr>
+            <td class="input" bgcolor="#EEEEEE" valign="top" align="left" nowrap=""><b>Motor:</b>
+              Manufacturer - Type (Kv in rpm)<br>
+              <select onchange="loadMotorTyps(document.inputform)" name="hersteller" style="color: rgb(0, 0, 0); ">
+            <option value="-1">select...
+              <script language="JavaScript">document.write(theShopMotors)</script></option><option value="39">actro </option><option value="52">Aeolian </option><option value="41">ARC </option><option value="1">AXI </option><option value="25">Cyclon </option><option value="38">Dualsky </option><option value="30">E-flite </option><option value="31">EMAX  </option><option value="10">ePower X </option><option value="50">EP Product</option><option value="32">Faigao </option><option value="33">Flyware </option><option value="2">Hacker </option><option value="21">HET </option><option value="36">Himax </option><option value="3">Hyperion </option><option value="28">Infinite </option><option value="37">KEDA </option><option value="6">Kontronik </option><option value="20">Lehner </option><option value="11">Leomotion </option><option value="59">Leopard </option><option value="56">LiPolice </option><option value="55">Magic Torque </option><option value="4">Mini AC </option><option value="9">Mega Motor </option><option value="5">NeuMotors </option><option value="57">O.S.Motor </option><option value="60">Planet-Hobby </option><option value="40">Plettenberg </option><option value="53">PowerHD </option><option value="48">ProTronik </option><option value="51">Pulso </option><option value="54">RCTimer </option><option value="43">RedRock </option><option value="47">RimFire </option><option value="44">robbe ROXXY </option><option value="42">Roton </option><option value="8">Scorpion </option><option value="58">Tenshock </option><option value="45">Thunder Tiger </option><option value="46">Tiger Motor </option><option value="34">Torcster </option><option value="35">Turnigy </option><option value="21">Typhoon </option><option value="7">Waypoint </option><option value="49">Xera </option><option value="0">Alle </option>    
+            </select> 
+            <select onchange="configMotor()" name="motortyp" style="color: rgb(0, 0, 0); ">
+            <option value="0" selected="">Custom
+            </option></select>
+            <input type="hidden" name="Motor" size="50" value="select... Custom">
+            </td>
+            <td class="input" bgcolor="#EEEEEE" valign="top" align="left" nowrap=""><br>
+              &nbsp;&nbsp;</td>
+            <td class="input" bgcolor="#EEEEEE" valign="top" align="left" nowrap="">Kv
+              (w/o torque):<br>
+              <input onchange="motorcalcs()" size="5" name="outKv" style="color: rgb(0, 0, 0); ">   rpV</td>
+            <td class="input" bgcolor="#EEEEEE" valign="top" align="left" nowrap="">&nbsp;&nbsp;</td>
+            <td class="input" bgcolor="#EEEEEE" valign="top" align="left" nowrap="">Resistance:<br>
+              <input onchange="motorcalcs()" size="5" name="outRm" style="color: rgb(0, 0, 0); ">  Ohm</td>
+            <td class="input" bgcolor="#EEEEEE" valign="top" align="left" nowrap="">&nbsp;</td>
+            <td class="input" bgcolor="#EEEEEE" valign="top" align="left" nowrap="">no-load
+              Current:<br>
+              <input onchange="motorcalcs()" size="3" name="outIo" style="color: rgb(0, 0, 0); ">  A @
+              <input onchange="motorcalcs()" size="3" name="outUIo" style="color: rgb(0, 0, 0); ">   V</td>
+            <td class="input" bgcolor="#EEEEEE" valign="top" align="left" nowrap="">&nbsp;</td>
+            <td class="input" bgcolor="#EEEEEE" valign="top" align="left" nowrap="">Limit
+              (up to 20s):<br>
+              <input onchange="motorcalcs()" size="3" name="outLimit" style="color: rgb(0, 0, 0); "> <select onchange="motorcalcs()" size="1" name="outLimitTyp" style="color: rgb(0, 0, 0); ">
+                <option selected="">A</option>
+                <option>W</option>
+              </select></td>
+            <td class="input" bgcolor="#EEEEEE" valign="top" align="left" nowrap="">&nbsp;</td>
+            <td class="input" bgcolor="#EEEEEE" valign="top" align="left" nowrap="">
+            # mag. Poles:<br>
+            <input onchange="motorcalcs()" size="5" name="outPols" style="color: rgb(0, 0, 0); "> </td>
+            <td class="input" bgcolor="#EEEEEE" valign="top" align="left" nowrap="">&nbsp;</td>
+            <td class="input" bgcolor="#EEEEEE" valign="top" align="left" nowrap="">
+			Case Lenght:<br>
+              <input onchange="motorcalcs()" size="5" name="outLength" style="color: rgb(0, 0, 0); "> <span id="lbMotorLen">mm</span></td>
+          </tr>
+          <tr>
+            <td class="input" valign="top" align="left" nowrap=""><b>Ducted Fan:</b><br><select onchange="motorcalcs()" name="proptype" style="color: rgb(0, 0, 0); "><option value="0" selected="">select...</option><option value="1">Aeronaut TurboFan 4000 (120mm)</option><option value="2">**Aeronaut TurboFan 8000 (145mm)</option><option value="3">**Alfa EDF 60/25 (60mm)</option><option value="4">Alfa EDF 60/ Mk. II (60mm)</option><option value="5">**Amacker 90/8/52 (90mm)</option><option value="6">Amacker 120/4/52 (120mm)</option><option value="7">** ChangeSun CS70 (70mm)</option><option value="8">** ChangeSun CS90 (90mm)</option><option value="9">** Deiss JD90 (90mm)</option><option value="10">** Deiss JD100 (100mm)</option><option value="11">** Deiss JD120 (120mm)</option><option value="12">** Dynamax (127mm)</option><option value="13">** Ejets Jetfan90-V2 (90mm)</option><option value="14">** Ejets Jetfan90-V1 (90mm)</option><option value="15">** HET Fan 6904 (69mm)</option><option value="16">** Kyosho Fan (70mm)</option><option value="17">Schuebeler DS-30 HDT (69mm)</option><option value="18">Schuebeler DS-30-3ph (69mm)</option><option value="19">Schuebeler DS-51 HDT (90mm)</option><option value="20">Schuebeler DS-51-3ph (90mm)</option><option value="21">Schuebeler DS-75 HDT (110mm)</option><option value="22">Schuebeler DS-94 HDT (120mm)</option><option value="23">Schuebeler DS-94-3ph (120mm)</option><option value="24">** Schuebeler DS-94 HST (128mm)</option><option value="25">** Scorpio Fantex 4xx (60mm)</option><option value="26">** Scorpio Fantex 6xx (76mm)</option><option value="27">StuMax SM110-52 (110mm)</option><option value="28">**StuMax SM110-45 (110mm)</option><option value="29">**Tamjets TJ100 (100mm)</option><option value="30">Vasa 65 (65mm)</option><option value="31">Velocity-RC WM400 (69mm)</option><option value="32">**WemoTec MiniFan Pro (69mm)</option><option value="33">WemoTec MiniFan 480 (69mm)</option><option value="34">WemoTec MidiFan (90mm)</option><option value="35">** WemoTec HW609 (75mm)</option><option value="36">** WemoTec HW620 (85mm)</option><option value="37">** WemoTec HW730 (106mm)</option><option value="38">WemoTec HW750 (125mm)</option></select> <input type="hidden" name="Prop" size="50" value="select..."></td>
+            <td class="input" valign="top" align="left" nowrap=""></td>
+            <td class="input" valign="top" align="left" nowrap="" colspan="3">thrust
+              duct for:<br><input onchange="motorcalcs()" size="5" name="duct" value="100" style="color: rgb(0, 0, 0); "> <select onchange="motorcalcs()" name="ducttyp" style="color: rgb(0, 0, 0); "> <option value="0" selected="">% FSA</option><option value="1">mm Diameter</option><option value="3">in Diameter</option><option value="2">cm^2 Area</option><option value="4">in^2 Area</option></select></td>
+            <td class="input" valign="top" align="left" nowrap=""></td>
+            <td class="input" valign="top" align="left" nowrap=""> Flight Speed:<br><input onchange="motorcalcs()" size="5" name="flightspeed" value="0" style="color: rgb(0, 0, 0); "> <span id="lbFlightSpeed">km/h</span></td>
+            <td class="input" valign="top" align="left" nowrap=""></td>
+            <td class="input" valign="top" align="left" nowrap="">
+            </td>
+            <td class="input" valign="top" align="left" nowrap=""></td>
+            <td class="input" valign="top" align="left" nowrap="">
+            Gear:<br>
+              <input onchange="motorcalcs()" size="5" value="1.00" name="gearratio" style="color: rgb(0, 0, 0); "> :1 
+            </td>
+            <td class="input" valign="top" align="left" nowrap=""></td>
+            <td class="input" valign="bottom" align="left" nowrap=""><input type="button" value="calculate" onclick="motorcalcs()"></td>
+          </tr>
+<script language="JavaScript"> <!--
+  writeEDFData(evaluateEDF)
+// --> </script><input type="hidden" size="5" name="propdiameter">
+<input type="hidden" size="5" name="proppitch">
+<input type="hidden" size="5" value="2" name="propblades">
+<input type="hidden" size="5" value="1.31" name="propconst">
+<input type="hidden" size="5" value="0.7" name="propEff">
+<input type="hidden" size="5" value="0" name="FSA">
+
+
+
+        </tbody></table>
+      </td>
+    </tr>
+        <tr>
+      <td>
+      <hr class="line">
+      </td>
+    </tr>
+    <tr>
+      <td class="output">
+        <table border="0" cellspacing="0" cellpadding="4" width="100%">
+          <tbody><tr>
+            <td class="input" valign="top" align="left" nowrap=""><b><big>Approx.
+              Values:</big></b> </td>
+            <td class="input" valign="top" align="left" nowrap="">&nbsp;</td>
+            <td class="input" valign="top" align="left" nowrap=""><b>Warning:</b> </td>
+            <td class="input" valign="top" align="left" nowrap="">&nbsp;</td>
+            <td class="input" valign="top" align="left" nowrap="" colspan="9">&nbsp;<textarea rows="3" name="outWarning" cols="70" class="warning" wrap="physical" onchange="motorcalcs()"></textarea> </td>
+          </tr>
+          <tr>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap=""><b>Battery:</b></td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">&nbsp;&nbsp;</td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">Load:<br>
+              <input onchange="motorcalcs()" size="5" name="outMaxC" class="hilight" style="color: rgb(0, 0, 0); ">    C</td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">&nbsp;&nbsp;</td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">Voltage:<br>
+              <input onchange="motorcalcs()" size="5" name="outPackVeff" class="hilight" style="color: rgb(0, 0, 0); "> V</td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">&nbsp;&nbsp;</td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">Rated
+              Voltage:<br>
+              <input onchange="motorcalcs()" size="5" name="outPackV" style="color: rgb(0, 0, 0); ">     V</td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap=""></td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">Flight
+              Time*:<br>
+              <input onchange="motorcalcs()" size="5" name="outDuration" style="color: rgb(0, 0, 0); ">   min</td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap=""></td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">mixed
+              Flight Time:<br>
+              <input onchange="motorcalcs()" size="5" name="outDurationMix" style="color: rgb(0, 0, 0); ">   min</td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap=""></td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">Weight:<br>
+              <input onchange="motorcalcs()" size="5" name="outPackOz" style="color: rgb(0, 0, 0); "> <span id="lbBatWt">g</span></td>
+          </tr>
+          <tr>
+            <td class="output" valign="top" align="left" nowrap=""><b>Motor:</b></td>
+            <td class="output" valign="top" align="left" nowrap=""></td>
+            <td class="output" valign="top" align="left" nowrap="">max. Current:<br>
+              <input onchange="motorcalcs()" size="5" name="outImotor" class="hilight" style="color: rgb(0, 0, 0); ">   A</td>
+            <td class="output" valign="top" align="left" nowrap=""></td>
+            <td class="output" valign="top" align="left" nowrap="">Voltage:<br>
+              <input onchange="motorcalcs()" size="5" name="outVmotor" style="color: rgb(0, 0, 0); ">   V</td>
+            <td class="output" valign="top" align="left" nowrap=""></td>
+            <td class="output" valign="top" align="left" nowrap="">Revolutions:<br>
+              <input onchange="motorcalcs()" size="5" name="outRPM" style="color: rgb(0, 0, 0); ">     rpm</td>
+            <td class="output" valign="top" align="left" nowrap="">&nbsp;&nbsp;</td>
+            <td class="output" valign="top" align="left" nowrap="">el. Power (In):<br>
+              <input onchange="motorcalcs()" size="5" name="outWin" style="color: rgb(0, 0, 0); ">   W</td>
+            <td class="output" valign="top" align="left" nowrap="">&nbsp;&nbsp;</td>
+            <td class="output" valign="top" align="left" nowrap="">mech. Power
+              (out):<br>
+              <input onchange="motorcalcs()" size="5" name="outWout" style="color: rgb(0, 0, 0); ">   W</td>
+            <td class="output" valign="top" align="left" nowrap="">&nbsp;&nbsp;</td>
+            <td class="output" valign="top" align="left" nowrap="">Efficiency:<br>
+              <input onchange="motorcalcs()" size="5" name="outPctEff" style="color: rgb(0, 0, 0); ">  %</td>
+          </tr>
+          <tr>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap=""><b>Optimal
+              Efficiency:</b></td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap=""></td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">Strom:<br>
+              <input onchange="motorcalcs()" size="5" name="outIEff" style="color: rgb(0, 0, 0); ">  A</td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap=""></td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">Voltage:<br>
+              <input onchange="motorcalcs()" size="5" name="outVEff" style="color: rgb(0, 0, 0); ">  V</td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap=""></td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">Revolutions:<br>
+              <input onchange="motorcalcs()" size="5" name="outRPMEff" style="color: rgb(0, 0, 0); ">     rpm</td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap=""></td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">el.
+              Power (In):<br>
+              <input onchange="motorcalcs()" size="5" name="outWinEff" style="color: rgb(0, 0, 0); ">  W</td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap=""></td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">mech.
+              Power (out):<br>
+              <input onchange="motorcalcs()" size="5" name="outWoutEff" style="color: rgb(0, 0, 0); ">  W</td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap=""></td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">Efficiency:<br>
+              <input onchange="motorcalcs()" size="5" name="outPctMaxEff" style="color: rgb(0, 0, 0); "> %</td>
+          </tr>
+          <tr>
+            <td class="output" valign="top" align="left" nowrap=""><b>Ducted Fan:</b></td>
+            <td class="output" valign="top" align="left" nowrap=""></td>
+            <td class="output" valign="top" align="left" nowrap="">Static Thrust:<br>
+              <input onchange="motorcalcs()" size="5" name="outPropSThrust" class="hilight" style="color: rgb(0, 0, 0); font-weight: bold; ">    g&nbsp; =<br>
+              <input onchange="motorcalcs()" size="5" name="outPropSThrustImp" class="hilight" style="color: rgb(0, 0, 0); font-weight: bold; ">     oz</td>
+            <td class="output" valign="top" align="left" nowrap=""></td>
+            <td class="output" valign="top" align="left" nowrap=""><br>
+              <input onchange="motorcalcs()" size="5" name="outPropSThrustN" style="color: rgb(0, 0, 0); ">     N</td>
+            <td class="output" valign="top" align="left" nowrap=""></td>
+            <td class="output" valign="top" align="left" nowrap="">Thrust in Flight:<br>
+              <input onchange="motorcalcs()" size="5" name="outPropSThrustFlight" class="hilight" style="color: rgb(0, 0, 0); "> g<br>
+              <input onchange="motorcalcs()" size="5" name="outPropSThrustFlightImp" class="hilight" style="color: rgb(0, 0, 0); ">  oz</td>
+            <td class="output" valign="top" align="left" nowrap=""></td>
+            <td class="output" valign="top" align="left" nowrap="">max. Jet Efflux:<br>
+              <input onchange="motorcalcs()" size="5" name="outPitchSpeed" style="color: rgb(0, 0, 0); ">      km/h&nbsp;&nbsp; =<br>
+              <input onchange="motorcalcs()" size="5" name="outPitchSpeedImp" style="color: rgb(0, 0, 0); ">       mph =</td>
+            <td class="output" valign="top" align="left" nowrap=""></td>
+            <td class="output" valign="top" align="left" nowrap=""><br>
+              <input onchange="motorcalcs()" size="5" name="outPitchSpeedms" style="color: rgb(0, 0, 0); ">       m/s<br>
+              <input onchange="motorcalcs()" size="5" name="outPitchSpeedmsImp" style="color: rgb(0, 0, 0); ">        ft/s</td>
+            <td class="output" valign="top" align="left" nowrap=""></td>
+            <td class="output" valign="top" align="left" nowrap="">Revolutions:<br>
+              <input onchange="motorcalcs()" size="5" name="outPropRpm" style="color: rgb(0, 0, 0); ">     rpm</td>
+          </tr>
+          <tr>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap=""><b>Entire
+              Drive:</b></td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">&nbsp;</td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" colspan="5" nowrap="">Weight:<br>
+              <input size="5" name="outPowersys" style="color: rgb(0, 0, 0); "> <span id="lbDriveWt">g</span>&nbsp;&nbsp;&nbsp;(Battery + Controller + Motor + 10%)</td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">&nbsp;</td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">
+              <input type="hidden" onchange="motorcalcs()" size="5" name="outPin" value="0">   &nbsp;Fan Efficiency:<br>
+              <input onchange="motorcalcs()" size="5" name="outFanEff" class="hilight" style="color: rgb(0, 0, 0); "> g/W =</td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">&nbsp;</td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">
+             &nbsp;<br>
+              <input type="hidden" onchange="motorcalcs()" size="5" name="outPout" value="0"><input onchange="motorcalcs()" size="5" name="outFanEffImp" class="hilight" style="color: rgb(0, 0, 0); ">  oz/W</td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">&nbsp;</td>
+            <td class="output" valign="top" align="left" bgcolor="#EEEEEE" nowrap="">Efficiency:<br>
+              <input onchange="motorcalcs()" size="5" name="outTotEff" class="hilight" style="color: rgb(0, 0, 0); "> %</td>
+          </tr>
+        </tbody></table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      <hr class="line">
+      </td>
+    </tr>
+
+    <tr>
+      <td class="output" align="left" valign="top" height="450">
+      <table width="100%" id="table1">
+        <tbody><tr>
+          <td class="output" valign="top" align="left">
+            <b><big>Motor Data</big><big>:</big></b>
+		 </td>
+          <td class="output" valign="top" align="left">
+		 </td>
+          <td class="output" valign="top" align="left">
+            Motor Cooling:<br>
+            <select onchange="motorcalcs();" name="cooling" style="color: rgb(0, 0, 0); ">
+              <option value="1">excellent
+              </option><option value="1.75">good
+              </option><option value="2.5" selected="">medium
+              </option><option value="3.5">poor
+              </option><option value="5.5">very poor</option>
+            </select>
+		 </td>
+		 <td class="output" valign="top" align="left">Power Scale:<br>
+              <select onchange="motorcalcs();" name="PowerScale" style="color: rgb(0, 0, 0); ">
+            <option value="0" selected="">automatic
+            </option><option value="1">1 Watt per Unit
+            </option><option value="2">2 Watt per Unit
+            </option><option value="5">5 Watt per Unit
+            </option><option value="10">10 Watt per Unit
+            </option><option value="20">20 Watt per Unit
+            </option><option value="50">50 Watt per Unit
+            </option><option value="100">100 Watt per Unit            
+            </option></select></td>
+	  </tr>
+      <tr>
+         <td colspan="4" class="output" align="center">
+            <div id="placeholder" style="width: 900px; height: 450px; padding: 0px; position: relative; "><canvas class="base" width="900" height="450"></canvas><canvas class="overlay" width="900" height="450" style="position: absolute; left: 0px; top: 0px; "></canvas><div class="tickLabels" style="font-size:smaller"><div class="xAxis x1Axis" style="color:#545454"><div class="tickLabel" style="position:absolute;text-align:center;left:-18px;top:440px;width:81px">0</div><div class="tickLabel" style="position:absolute;text-align:center;left:70px;top:440px;width:81px">1</div><div class="tickLabel" style="position:absolute;text-align:center;left:159px;top:440px;width:81px">2</div><div class="tickLabel" style="position:absolute;text-align:center;left:247px;top:440px;width:81px">3</div><div class="tickLabel" style="position:absolute;text-align:center;left:336px;top:440px;width:81px">4</div><div class="tickLabel" style="position:absolute;text-align:center;left:425px;top:440px;width:81px">5</div><div class="tickLabel" style="position:absolute;text-align:center;left:513px;top:440px;width:81px">6</div><div class="tickLabel" style="position:absolute;text-align:center;left:602px;top:440px;width:81px">7</div><div class="tickLabel" style="position:absolute;text-align:center;left:691px;top:440px;width:81px">8</div><div class="tickLabel" style="position:absolute;text-align:center;left:779px;top:440px;width:81px">9</div></div><div class="yAxis y1Axis" style="color:#545454"><div class="tickLabel" style="position:absolute;text-align:right;top:428px;right:885px;width:15px">0</div><div class="tickLabel" style="position:absolute;text-align:right;top:349px;right:885px;width:15px">20</div><div class="tickLabel" style="position:absolute;text-align:right;top:270px;right:885px;width:15px">40</div><div class="tickLabel" style="position:absolute;text-align:right;top:191px;right:885px;width:15px">60</div><div class="tickLabel" style="position:absolute;text-align:right;top:112px;right:885px;width:15px">80</div><div class="tickLabel" style="position:absolute;text-align:right;top:32px;right:885px;width:15px">100</div></div></div><div class="legend"><div style="position: absolute; width: 159px; height: 110px; top: 9px; left: 27px; background-color: rgb(255, 255, 255); opacity: 0.85; "> </div><table style="position:absolute;top:9px;left:27px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(237,194,64);overflow:hidden"></div></div></td><td class="legendLabel">el. Power [in 1W]</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(175,216,248);overflow:hidden"></div></div></td><td class="legendLabel">Efficiency [%]</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(100, 30, 100);overflow:hidden"></div></div></td><td class="legendLabel">max. Revolutions [in 100rpm]</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(190, 100, 0);overflow:hidden"></div></div></td><td class="legendLabel">wast Power [W]</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(30, 180, 20);overflow:hidden"></div></div></td><td class="legendLabel">Motor Case Temp. [°C]</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(200, 20, 30);overflow:hidden"></div></div></td><td class="legendLabel">Motor Case Temp. overlimit [°C]</td></tr></tbody></table></div><div style="position:absolute;left:806px;top:420px;color:#666;font-size:7pt">(c) by s4a &nbsp;&nbsp;&nbsp;V1.07</div></div><br>Ampere
+         </td>
+      </tr>
+      <tr>
+      <td colspan="4">
+      <hr class="line">
+      </td>
+    </tr>
+    <tr>
+      </tr></tbody></table><table width="100%">
+      <tbody><tr>
+      <td class="output">
+        <p align="left">
+        <b><font color="#FF0000">Important
+        Note:</font></b><br>
+        Before flight recheck the max. current!&nbsp;If your Current, el. Power or RPM are over the manufacturers limits&nbsp;<b>your&nbsp;<br>
+ motor, controller and/or battery may take damage! </b>Thrust<b> </b>reduction due
+        long ducting are <b> not</b>   considered!
+        </p>
+      </td>
+      <td class="output">
+        <p align="left"><b>&nbsp;</b>for printing use
+        Landscape format<br>
+        * Flight Time @ Full Power<b><br>
+        ** Testdata with reduced accuracy</b>
+
+      </p></td>
+      <td class="output">
+      </td>
+    </tr>
+      <tr>
+      <td class="legal" colspan="3">
+       <a href="javascript:createLink(document.inputform)">generate Link</a> &gt; <small id="directLink"></small>
+      </td>
+    </tr>
+    </tbody></table>
+  </td></tr></tbody></table>
+  
+  
+<!-- END CODE von eCalc // -->
+        
+        </form></td>
+		<td valign="top">&nbsp;&nbsp;&nbsp; &nbsp;</td>
+		<td valign="top">
+		
+&nbsp;<br>
+<script type="text/javascript"><!--
+if (displayAds){
+   google_ad_client = "ca-pub-8870605705552247";
+   /* Vertical240 */
+   google_ad_slot = "3222522221";
+   google_ad_width = 120;
+   google_ad_height = 240;
+   google_call="<script type='text/javascript' src='http://pagead2.googlesyndication.com/pagead/show_ads.js'> </script>";
+}
+//-->
+</script>
+<script type="text/javascript">
+  if (displayAds) document.write(google_call);
+</script><script type="text/javascript" src="./eCalc  fanCalc - EDF   Fan   Impeller eMotor Calculator - (c) by Markus Müller_files/show_ads.js"> </script><ins style="display:inline-table;border:none;height:240px;margin:0;padding:0;position:relative;visibility:visible;width:120px"><ins id="aswift_0_anchor" style="display:block;border:none;height:240px;margin:0;padding:0;position:relative;visibility:visible;width:120px"><iframe allowtransparency="true" frameborder="0" height="240" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){i+=&#39;.call&#39;;setTimeout(h,0)}else if(h.match){i+=&#39;.nav&#39;;w.location.replace(h)}s.log&amp;&amp;s.log.push(i)}" scrolling="no" vspace="0" width="120" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins>
+
+
+
+<br>&nbsp;<br>
+
+
+<script type="text/javascript"><!--
+if (displayAds){
+   google_ad_client = "ca-pub-8870605705552247";
+   /* Vertical600 */
+   google_ad_slot = "0138122881";
+   google_ad_width = 120;
+   google_ad_height = 600;
+   google_call="<script type='text/javascript' src='http://pagead2.googlesyndication.com/pagead/show_ads.js'> </script>";
+}
+//-->
+</script>
+<script type="text/javascript">
+  if (displayAds) document.write(google_call);
+</script><script type="text/javascript" src="./eCalc  fanCalc - EDF   Fan   Impeller eMotor Calculator - (c) by Markus Müller_files/show_ads.js"> </script><ins style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:120px"><ins id="aswift_1_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:120px"><iframe allowtransparency="true" frameborder="0" height="600" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){i+=&#39;.call&#39;;setTimeout(h,0)}else if(h.match){i+=&#39;.nav&#39;;w.location.replace(h)}s.log&amp;&amp;s.log.push(i)}" scrolling="no" vspace="0" width="120" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;"></iframe></ins></ins>
+
+		
+		</td>
+	</tr>
+</tbody></table>
+  
+  
+  
+<center>
+  <input type="hidden" onchange="motorcalcs()" size="10" name="outKt" value="Infinity">
+  <input type="hidden" onchange="motorcalcs()" size="5" name="outEffDiameter" value="0">
+<center>
+<div class="legal">
+  Copyright (C) by Markus Müller, http://www.s4a.ch &nbsp;&nbsp; email: ecalc[at]s4a.ch All rights reserved.
+  <br>See HTML Source for full and complete copyright notice. <a href="http://www.ecalc.ch/indexcalc.htm">About
+  eCalc...</a>
+  <br><script language="JavaScript">document.write(theVersion)</script>V F5.17 06.09.12 /  Data: 21.10.12 with 2733 Motors<br>
+</div>
+<script language="JavaScript"> <!--
+  loadDropDown(document.inputform);
+  acceptUserStatement();
+  preselectComponents(document.inputform);
+  plotMotorGraph();
+  document.write(theShopCounter);
+// --> </script><img src="./eCalc  fanCalc - EDF   Fan   Impeller eMotor Calculator - (c) by Markus Müller_files/counter.php" border="0" alt="Website Hit Counter"><a href="http://www.modellflugtipps.de/toplinks/toplinks.php?id=2016" target="_blank"><img src="./eCalc  fanCalc - EDF   Fan   Impeller eMotor Calculator - (c) by Markus Müller_files/image.php" border="0" vspace="0" hspace="0" height="0" width="0"></a>
+</center></center></center>
+
+</body></html>

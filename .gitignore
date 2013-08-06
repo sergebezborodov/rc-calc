@@ -1,0 +1,8 @@
+.idea/*
+config-local.php
+runtime
+local.php
+tmp/*
+database.php
+public/assets/*
+.DS_Store

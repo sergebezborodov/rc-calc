@@ -1,0 +1,26 @@
+.has-icon16 {
+    display: inline-block;
+    padding-left: 18px;
+    height: 16px;
+    vertical-align:middle;
+    outline: none !important;
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+
+.has-icon16.pencil { background-image: url(/themes/web/img/icons/pencil-16.png); }
+
+
+.sort {
+    display: inline-block;
+    padding-right: 18px;
+    height: 16px;
+    vertical-align:middle;
+    outline: none !important;
+    background-position: right center;
+    background-repeat: no-repeat;
+
+    font-weight: normal;
+}
+.sort.sort-asc  { background-image: url(/themes/web/img/icons/sort-asc-16.png); }
+.sort.sort-desc { background-image: url(/themes/web/img/icons/sort-desc-16.png); }

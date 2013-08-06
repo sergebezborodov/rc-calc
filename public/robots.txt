@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /ru/login
+Disallow: /en/login
+
+Disallow: /ru/copter
+Disallow: /en/copter

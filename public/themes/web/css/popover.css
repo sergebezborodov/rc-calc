@@ -1,0 +1,11 @@
+.popover {
+    padding: 0;
+}
+.popover .popover-content {
+    padding: 6px 10px;
+}
+.popover .popover-title {
+    color: #ffffff;
+    padding: 4px 10px;
+    background-color: #fc564e;
+}
